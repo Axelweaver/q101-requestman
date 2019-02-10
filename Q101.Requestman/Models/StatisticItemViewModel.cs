@@ -6,7 +6,7 @@
 
         public string Url { get; set; }
 
-        public int Status { get; set; }
+        public int? Status { get; set; }
 
         public string Duration { get; set; }
     }

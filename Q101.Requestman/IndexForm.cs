@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,6 +19,9 @@ namespace Q101.Requestman
             = new BindingList<StatisticItemViewModel>();
 
         private readonly StringToHttpMethodConverterMethodsList _methodsList;
+
+        private readonly List<RequestModel> _requests =
+            new List<RequestModel>();
 
         /// <summary>
         /// Constructor
@@ -41,6 +45,20 @@ namespace Q101.Requestman
             StatisticDataGrid.DataSource = _statisticList;
         }
 
+        private void UpdateStatList()
+        {
+            _statisticList.Clear();
+
+            _requests.ForEach(r => _statisticList.Add( new StatisticItemViewModel
+                {
+                    Id = r.Id,
+                    Url = r.Url,
+                    Duration = r.Response is null ? null :  $"{(r.Response.TimeStamp - r.DateTime).TotalMilliseconds} ms",
+                    Status = r.Response?.HttpStatusCode
+                })
+            );
+        }
+
         private async void button1_Click(object sender, System.EventArgs e)
         {
 
@@ -50,16 +68,7 @@ namespace Q101.Requestman
         private async Task SendRequest()
         {
 
-            var id = _statisticList.Count == 0
-                ? 1
-                : _statisticList.Count + 1;
-
-            var statisticItem = new StatisticItemViewModel
-            {
-                Id = id,
-                Url = UrlTextBox.Text
-            };
-            _statisticList.Add(statisticItem);
+            var id = _requests.Count + 1;
  
             var processing = new RequestProcessing(
                 new RequestHelper(), 
@@ -68,6 +77,7 @@ namespace Q101.Requestman
 
             var request = new RequestModel
             {
+                Id = id,
                 DateTime = DateTime.Now,
                 Url = UrlTextBox.Text,
                 Method = RequestBodyTextBox.SelectedText,
@@ -75,14 +85,12 @@ namespace Q101.Requestman
                 Body = RequestBodyTextBox.Text
             };
 
+            _requests.Add(request);
+            UpdateStatList();
+
             await processing.SendRequest(request);
 
-            var duration = (request.Response.TimeStamp - request.DateTime).TotalMilliseconds;
-
-            statisticItem.Status = request.Response.HttpStatusCode;
-            statisticItem.Duration = $"{duration} ms";
-
-            _statisticList[id - 1] = statisticItem;
+           UpdateStatList();
         }
 
         private void IndexForm_Load(object sender, EventArgs e)
