@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Q101.Requestman
 {
-    public partial class Form1 : Form
+    public partial class IndexForm : Form
     {
-        public Form1()
+        public IndexForm()
         {
             InitializeComponent();
         }
