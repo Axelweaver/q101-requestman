@@ -26,6 +26,8 @@ namespace Q101.Requestman
         {
             InitializeComponent();
 
+            
+
             _methodsList = new StringToHttpMethodConverterMethodsList();
 
             RequestTypeComboBox.DataSource =
@@ -81,6 +83,11 @@ namespace Q101.Requestman
             statisticItem.Duration = $"{duration} ms";
 
             _statisticList[id - 1] = statisticItem;
+        }
+
+        private void IndexForm_Load(object sender, EventArgs e)
+        {
+            Text = $"{Text} version {Program.Version}";
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IndexForm));
             this.SendRequestButton = new System.Windows.Forms.Button();
             this.RequestBodyTextBox = new System.Windows.Forms.TextBox();
             this.UrlTextBox = new System.Windows.Forms.TextBox();
@@ -163,10 +164,12 @@
             this.Controls.Add(this.UrlTextBox);
             this.Controls.Add(this.RequestBodyTextBox);
             this.Controls.Add(this.SendRequestButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "IndexForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Q101.Requestman";
+            this.Text = "Q101.Requestman - created by AxeL (Tkachev Aleksei)";
+            this.Load += new System.EventHandler(this.IndexForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.StatisticDataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
