@@ -46,14 +46,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\StringToHttpMethodConverter.cs" />
+    <Compile Include="Converters\StringToHttpMethodConverterMethodsList.cs" />
+    <Compile Include="Helpers\RequestHelper.cs" />
     <Compile Include="IndexForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="IndexForm.Designer.cs">
       <DependentUpon>IndexForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\RequestModel.cs" />
+    <Compile Include="Models\ResponseModel.cs" />
+    <Compile Include="Models\StatisticItemViewModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestProcessing.cs" />
     <EmbeddedResource Include="IndexForm.resx">
       <DependentUpon>IndexForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -79,5 +86,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
