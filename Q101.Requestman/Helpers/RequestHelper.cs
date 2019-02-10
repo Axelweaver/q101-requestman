@@ -32,7 +32,10 @@ namespace Q101.Requestman.Helpers
 
                 var requestMessage = new HttpRequestMessage(method, uri);
 
-                requestMessage.Content = new StringContent(body);
+                if (method != HttpMethod.Get && !string.IsNullOrEmpty(body))
+                {
+                    requestMessage.Content = new StringContent(body);
+                }
 
                 using (var responseMessage = await httpClient.SendAsync(requestMessage))
                 {

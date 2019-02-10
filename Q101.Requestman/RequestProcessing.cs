@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Q101.Requestman.Converters;
 using Q101.Requestman.Helpers;
 using Q101.Requestman.Models;
@@ -26,17 +27,17 @@ namespace Q101.Requestman
         /// SendRequest
         /// </summary>
         /// <param name="request"></param>
-        public void SendRequest(RequestModel request)
+        public async Task SendRequest(RequestModel request)
         {
             request.DateTime = DateTime.Now;
 
             var requestMethod = _httpMethodConverter.Convert(request.Method);
 
-            request.Response = _requestHelper.SendRequest(
+            request.Response = await _requestHelper.SendRequest(
                 requestMethod,
                 request.Url,
                 request.Body,
-                request.Headers).Result;
+                request.Headers);
         }
     }
 }
