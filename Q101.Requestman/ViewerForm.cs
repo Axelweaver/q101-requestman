@@ -6,7 +6,7 @@ namespace Q101.Requestman
 {
     public partial class ViewerForm : Form
     {
-        private string _requestBody;
+        private readonly string _requestBody;
 
         public ViewerForm(string requestBody)
         {

@@ -8,7 +8,7 @@ namespace Q101.Requestman
     /// </summary>
     static class Program
     {
-        public static string Version => "1.0.0-alpha";
+        public static string Version => "1.1.0-alpha";
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

@@ -38,11 +38,11 @@
             this.TextViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TextViewer.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TextViewer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.TextViewer.Location = new System.Drawing.Point(12, 41);
+            this.TextViewer.Location = new System.Drawing.Point(0, 41);
             this.TextViewer.Multiline = true;
             this.TextViewer.Name = "TextViewer";
             this.TextViewer.ReadOnly = true;
-            this.TextViewer.Size = new System.Drawing.Size(776, 397);
+            this.TextViewer.Size = new System.Drawing.Size(800, 409);
             this.TextViewer.TabIndex = 0;
             this.TextViewer.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextViewer_KeyUp);
             // 
