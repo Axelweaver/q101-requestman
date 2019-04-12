@@ -90,7 +90,13 @@ namespace Q101.Requestman
 
             await processing.SendRequest(request);
 
-           UpdateStatList();
+            UpdateStatList();
+
+            Enabled = false;
+
+            var viewForm = new ViewerForm(request.Response.Content);
+
+            viewForm.Show(this);
         }
 
         private void IndexForm_Load(object sender, EventArgs e)
